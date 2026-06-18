@@ -1,0 +1,49 @@
+# Portfolio Risk Engine Configuration
+
+# Default tickers for demo portfolio
+default_tickers:
+  - AAPL
+  - MSFT
+  - GOOGL
+  - AMZN
+  - TSLA
+  - JPM
+  - NVDA
+  - META
+
+# Date range for historical data (days)
+lookback_days: 7560  # ~30 years of trading data
+
+# Confidence levels for VaR calculation
+confidence_levels:
+  - 0.90
+  - 0.95
+  - 0.99
+
+# VaR calculation parameters
+var_params:
+  holding_period: 1  # days
+  n_simulations: 100000  # Monte Carlo simulations
+  random_seed: 42
+
+# GARCH(1,1) parameters
+garch_params:
+  distribution: normal  # or 't' for Student-t
+  update_freq: 5
+  disp: off
+
+# Portfolio allocation (equal weight if not specified)
+# Example: {AAPL: 0.20, MSFT: 0.15, ...}
+# If null, equal weight allocation is used
+custom_weights: null
+
+# Backtesting parameters
+backtest:
+  window_size: 252  # Rolling window (1 year)
+  step_size: 1      # Daily re-estimation
+
+# Visualization parameters
+viz:
+  style: seaborn-v0_8-darkgrid
+  figsize: [12, 8]
+  dpi: 100
